@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum JobTypes {
+  fulltime @map("fulltime")
+  parttime @map("parttime")
+  remote   @map("remote")
+}
+
+model JobOffers {
+  id          Int      @id @default(autoincrement())
+  job_code    String   @unique @db.VarChar(255)
+  title       String   @db.VarChar(255)
+  location    String   @db.VarChar(255)
+  job_type    JobTypes
+  salary_min  String   @db.VarChar(255)
+  salary_max  String   @db.VarChar(255)
+  salary_unit String   @db.VarChar(10)
+  company     String   @db.VarChar(255)
+  industry    String?  @db.VarChar(255)
+  website     String?  @db.VarChar(255)
+  skills      String   @db.VarChar(255)
+  experience  Int      @default(0)
+  posted_at   DateTime
+  created_at  DateTime @default(now())
+}
