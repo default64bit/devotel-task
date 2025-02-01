@@ -7,7 +7,7 @@ export interface DataStructure {
     job_code: string;
     title: string;
     location: string;
-    job_type: 'fulltime' | 'parttime' | 'remote';
+    job_type: 'fulltime' | 'parttime' | 'remote' | 'contract';
     salary_min: string;
     salary_max: string;
     salary_unit: string;

@@ -23,13 +23,16 @@ export class AppService {
             console.log(e);
             return {};
         });
-        const dataProcessor = new DataProcessor(data, provider).getProcessor();
+
+        const dataProcessor = new DataProcessor().getProcessor(data, provider);
         const unifiedData = dataProcessor.process();
 
         // remove duplicate job offers from inserting
         const duplicateJobOffers = await this.PrismaService.jobOffers.findMany({ where: { job_code: { in: unifiedData.map((d) => d.job_code) } } });
         const duplicateCodesList = duplicateJobOffers.map((j) => j.job_code);
-        const filteredData = unifiedData.filter((v, i) => duplicateCodesList.includes(v.job_code));
+        const filteredData = unifiedData.filter((v, i) => !duplicateCodesList.includes(v.job_code));
+
+        console.log({ filteredData });
 
         // save data to the database
         await this.PrismaService.jobOffers.createMany({ data: filteredData });

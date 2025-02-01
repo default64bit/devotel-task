@@ -8,12 +8,12 @@ export class DataProcessor {
     data: any;
     providerName: providers;
 
-    constructor(data: any, providerName: providers) {
+    constructor() {}
+
+    public getProcessor(data: any, providerName: providers): DataProcessorInterface | null {
         this.data = data;
         this.providerName = providerName;
-    }
 
-    public getProcessor(): DataProcessorInterface | null {
         switch (this.providerName) {
             case 'provider1':
                 return new Provider1Processor(this.data);

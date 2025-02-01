@@ -17,6 +17,7 @@ enum JobTypes {
   fulltime @map("fulltime")
   parttime @map("parttime")
   remote   @map("remote")
+  contract @map("contract")
 }
 
 model JobOffers {
