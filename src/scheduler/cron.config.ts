@@ -7,7 +7,7 @@ export type CronConfig = {
 };
 
 const config: CronConfig = {
-    runtime: CronExpression.EVERY_10_SECONDS,
+    runtime: CronExpression.EVERY_HOUR,
     url: 'https://assignment.devotel.io/api/provider2/jobs',
     provider: 'provider2',
 };

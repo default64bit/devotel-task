@@ -11,8 +11,8 @@ export class AppController {
     async GetJobOffersWithPagination(@Query() query: GetJobsDto, @Req() req: Request, @Res() res: Response) {
         const { records, totalCount, totalPages, currentPage } = await this.appService.GetJobOffersWithPagination({
             search: query.search,
-            page: query.page,
-            perPage: query.perPage,
+            page: query.page || 1,
+            perPage: query.perPage || 25,
             sortBy: query.sortBy,
             sortType: query.sortType,
         });
