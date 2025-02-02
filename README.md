@@ -8,6 +8,7 @@ $ npx prisma generate
 ```
 
 Setup the databse of your choice, then connect it using the provided **.env** variable
+
 Then push the database schema with this command:
 
 ```bash
@@ -40,6 +41,7 @@ There is cron job to fetch data regularly. You can config it via it's config fil
 - `/api/job-offers` : for listing of job-offers saved in the database
 
 **Method** : GET
+
 **Parameters** :
 | name | required | type | Default |
 | ---- | ------ | ------ | ---- |
@@ -50,8 +52,8 @@ sortBy | optional | ['job_code', 'salary_min', 'salary_max', 'experience', 'crea
 sortType | optional | ['asc', 'desc'] | 'desc'
 
 **example** :`localhost:3000/api/job-offers?search=Frontend&page=1`
-**response** :
 
+**response** :
 ```Json
 {
     "records": [
