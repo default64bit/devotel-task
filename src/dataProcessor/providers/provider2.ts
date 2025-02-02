@@ -1,6 +1,5 @@
-import { Request } from 'express';
 import { DataProcessorInterface, DataStructure } from '../processor.interface';
-import currencies from 'src/currencies';
+import currencies from '../../currencies';
 
 export class Provider2Processor implements DataProcessorInterface {
     public data: any;

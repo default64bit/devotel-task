@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { DataProcessor } from './dataProcessor/processor';
 import { providers } from './dataProcessor/processor.interface';
 import { PaginationParams } from './interfaces/paginations.interface';
@@ -31,8 +31,6 @@ export class AppService {
         const duplicateJobOffers = await this.PrismaService.jobOffers.findMany({ where: { job_code: { in: unifiedData.map((d) => d.job_code) } } });
         const duplicateCodesList = duplicateJobOffers.map((j) => j.job_code);
         const filteredData = unifiedData.filter((v, i) => !duplicateCodesList.includes(v.job_code));
-
-        console.log({ filteredData });
 
         // save data to the database
         await this.PrismaService.jobOffers.createMany({ data: filteredData });

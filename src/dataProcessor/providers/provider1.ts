@@ -1,4 +1,3 @@
-import { Request } from 'express';
 import { DataProcessorInterface, DataStructure } from '../processor.interface';
 
 export class Provider1Processor implements DataProcessorInterface {
